@@ -16,7 +16,7 @@ import torch.autograd as autograd
 import torch.optim as optim
 from torch.utils.data.distributed import DistributedSampler
 from torch.utils import data
-
+from seqeval.metrics import classification_report
 from tqdm import tqdm, trange
 import collections
 
@@ -54,7 +54,7 @@ print('Cuda is available?', cuda_yes)
 device = torch.device("cuda:0" if cuda_yes else "cpu")
 print('Device:', device)
 
-data_dir = os.path.join( './content/Peyman-Fold3-Original-Phrase/data/Fold3/')
+data_dir = os.path.join( '/content/Peyman-Fold3-Original-Phrase/data/Fold3/')
 # "Whether to run training."
 do_train = True
 # "Whether to run eval on the dev set."
@@ -74,7 +74,7 @@ weight_decay_crf_fc = 5e-6 #0.005
 total_train_epochs = 20
 gradient_accumulation_steps = 1
 warmup_proportion = 0.1
-output_dir = './content/Peyman-Fold3-Original-Phrase/output/'
+output_dir = '/content/Peyman-Fold3-Original-Phrase/output/'
 bert_model_scale = 'bert-base-multilingual-cased'
 do_lower_case = False
 # eval_batch_size = 8
